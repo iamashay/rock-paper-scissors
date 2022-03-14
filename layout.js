@@ -1,9 +1,9 @@
-const container = document.querySelector('#container');
+const startContainer = document.querySelector('#startContainer');
 const startBut = document.querySelector('#startBut');
 
 startBut.addEventListener('click', () => {
-    container.style.animation = "remove 1s";
+    startContainer.style.animation = "remove 1s";
     setTimeout(() => {
-        container.style.display = "none";
+        startContainer.style.display = "none";
     }, 1000)
 });

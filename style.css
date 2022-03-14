@@ -12,7 +12,7 @@ body {
     margin-bottom: 5vw;
 }
 
-#container {
+#startContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,12 +22,12 @@ body {
     /*animation: remove 1s; */
 }
 
-#container ul {
+#startContainer ul {
     list-style-image: url('./resources/hand-point.png');
 
 }
 
-#container ul li {
+#startContainer ul li {
 margin-bottom: 2px;
 }
 
