@@ -20,6 +20,7 @@ body {
     color: #5c5c5c;
     font-size: 20px;
     /*animation: remove 1s; */
+    display: none;
 }
 
 #startContainer ul {
@@ -62,3 +63,42 @@ button:hover {
         display: none;
     }
 }
+
+.scorebox {
+    background: #eee;
+    padding: 12px;
+    height: 12px;
+    width: 12px;
+    border: 1px solid black;
+}
+
+#playContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#scoreCard {
+    display: flex;
+}
+
+#moveCard {
+    display: flex;
+    gap: 1vw;
+}
+
+#choiceCard ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    gap: 5px;
+}
+
+* {
+    border: 1px solid;
+
+}
+
+
+
