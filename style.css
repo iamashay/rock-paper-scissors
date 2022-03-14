@@ -1,0 +1,60 @@
+body {
+    background-color: #EFFFFD;
+}
+
+#logo {
+    text-align: center;
+    font-size: 30px;
+    font-family: monospace, 'sans-serif';
+    font-weight: 900;
+    color: #42C2FF;
+    text-shadow: 1px 1px 1px #057faf;
+    margin-bottom: 5vw;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15vh;
+    color: #5c5c5c;
+    font-size: 20px;
+    animation: remove 1s;
+}
+
+#container ul {
+    list-style-image: url('./resources/hand-point.png');
+
+}
+
+#instruction {
+    width: 50vw;
+}
+
+button {
+    background: #000;
+    color: white;
+    border: 1px solid white;
+    font-size: 20px;
+    font-weight: 900;
+    padding: 15px;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+button:hover {
+    background: white;
+    color: #000;
+    border: 1px solid #000;
+}
+
+@keyframes remove {
+    0%   {
+        margin-right: 0vw;
+    }
+    100% {
+        margin-right: 80vw;
+        opacity: 0;
+        display: none;
+    }
+}
