@@ -19,12 +19,16 @@ body {
     gap: 15vh;
     color: #5c5c5c;
     font-size: 20px;
-    animation: remove 1s;
+    /*animation: remove 1s; */
 }
 
 #container ul {
     list-style-image: url('./resources/hand-point.png');
 
+}
+
+#container ul li {
+margin-bottom: 2px;
 }
 
 #instruction {
