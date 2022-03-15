@@ -20,7 +20,6 @@ body {
     color: #5c5c5c;
     font-size: 20px;
     /*animation: remove 1s; */
-    display: none;
 }
 
 #startContainer ul {
@@ -72,9 +71,28 @@ button:hover {
     border: 1px solid black;
 }
 
+.movebox {
+    height: 120px;
+    width: 85px;
+    background: #eee;
+    border: 1px solid black;
+    background-image: url('./resources/paper.jpg');
+
+}
+
 #playContainer {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+}
+
+#score {
+    width: 40vw;
+    text-align: center;
     display: flex;
     flex-direction: column;
+    gap: 10px;
     align-items: center;
 }
 
@@ -85,6 +103,31 @@ button:hover {
 #moveCard {
     display: flex;
     gap: 1vw;
+    width: 40vw;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#playerMove {
+    min-width: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#compMove {
+    min-width: 10vw;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+
+}
+
+#choiceCard {
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #choiceCard ul {
@@ -93,9 +136,21 @@ button:hover {
     padding: 0px;
     margin: 0px;
     gap: 5px;
+
 }
 
-* {
+#choices {
+    display: flex;
+    gap: 5px;
+    height: 120px;
+}
+
+#choices img {
+    max-width: 85px;
+    border: 1px solid rgb(43, 124, 156);
+}
+
+d {
     border: 1px solid;
 
 }
