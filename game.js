@@ -1,9 +1,17 @@
-const gameActions = ["Rock", "Paper", "Scissor"];
+const gameActions = ["rock", "paper", "scissors"];
 const startContainer = document.querySelector('#startContainer');
 const startBut = document.querySelector('#startBut');
 const playContainer = document.querySelector('#playContainer');
 const restartBut = document.querySelector('#restartBut');
-
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const playerScoreCard = document.querySelector('#playerScoreCard');
+const compScoreCard = document.querySelector('#compScoreCard');
+const playerMoveCard = document.querySelector('#playerMoveCard');
+const compMoveCard = document.querySelector('#compMoveCard');
+const roundCard = document.querySelector('#roundCard');
+const gameUpdate = document.querySelector('#gameUpdate');
 
 startBut.addEventListener('click', () => {
     startContainer.style.animation = "remove 0.5s";
@@ -17,6 +25,7 @@ startBut.addEventListener('click', () => {
 
 restartBut.addEventListener('click', () => {
     playContainer.style.animation = "remove 0.5s";
+    defaultGame();
     setTimeout(() => {
         playContainer.style.display = "none";
         playContainer.style.animation = "";
@@ -25,16 +34,14 @@ restartBut.addEventListener('click', () => {
     }, 500)
 });
 
-
-/*
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, compSelection) {
 
     playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
+    compSelection = compSelection.toLowerCase();
 
-    if (playerSelection === computerSelection){
+    if (playerSelection === compSelection){
         return "Tie";
-    }else if (gameActions.indexOf(playerSelection) === -1 || !playerSelection || (playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissor") || (playerSelection === "scissor" && computerSelection === "rock")){
+    }else if (gameActions.indexOf(playerSelection) === -1 || !playerSelection || (playerSelection === "rock" && compSelection === "paper") || (playerSelection === "paper" && compSelection === "scissor") || (playerSelection === "scissor" && compSelection === "rock")){
         return "Computer";
     }else {
         return "Player";
@@ -49,22 +56,87 @@ function generateRandomNum() {
     return Math.floor(Math.random() *  3);
 }
 
-function game(tries=1, playerScore=0, computerScore=0){
-    if (tries < 6){
-        let play = playRound(prompt(`Round ${tries} \n\nWhat's your action? Rock, Paper or Scissor?`), computerPlay())
-        if (play === "Player"){
-            game(++tries, ++playerScore, computerScore)
-        }else if (play === "Computer"){
-            game(++tries, playerScore, ++computerScore)
-        }else { //For Ties
-            game(++tries, playerScore, computerScore)
-        }
-    }else{
-        console.log("5 Rounds played!")
-        playerScore > computerScore ? console.log("Player won! Score: ", playerScore) : playerScore < computerScore ? console.log("Computer Won! Score: "+computerScore) : console.log("It was a tie!")
+function defaultGame() {
+    roundCard.innerText = 0;
+    compMoveCard.src = `./resources/question.png`;
+    playerMoveCard.src = `./resources/question.png`;
+    playerScoreCard.innerText = 0;
+    compScoreCard.innerText = 0;
+    gameUpdate.innerText = ""
+    rock.style.pointerEvents = '';
+    paper.style.pointerEvents = '';
+    scissors.style.pointerEvents = '';
+
+}
+
+function blockGame() {
+
+    rock.style.pointerEvents = 'none';
+    paper.style.pointerEvents = 'none';
+    scissors.style.pointerEvents = 'none';
+
+}
+
+function checkWinner() {
+    if (parseInt(playerScoreCard.innerText) > parseInt(compScoreCard.innerText)){
+        return ["Player", parseInt(playerScoreCard.innerText) - parseInt(compScoreCard.innerText)];
+    }else if (parseInt(playerScoreCard.innerText) < parseInt(compScoreCard.innerText)){
+        return ["Computer", parseInt(compScoreCard.innerText) - parseInt(playerScoreCard.innerText)];
+    }else {
+        return ['Tie'];
+
     }
 }
 
+function game(playerSelection) {
+    //console.log(playerSelection);
+    playerSelection = playerSelection.target.id;
+
+    roundCard.innerText = parseInt(roundCard.innerText) + 1;
+    let compSelection = computerPlay();
+    compMoveCard.src = `./resources/${compSelection}.jpg`;
+    playerMoveCard.src = `./resources/${playerSelection}.jpg`;
+
+    let result = playRound(playerSelection, compSelection)
+
+    if (result === "Player"){
+        playerScoreCard.innerText = parseInt(playerScoreCard.innerText) + 1;
+        gameUpdate.innerText = "Player won!";
+    }else if (result === "Computer"){
+        compScoreCard.innerText = parseInt(compScoreCard.innerText) + 1;
+        gameUpdate.innerText = "Computer won!";
+
+    }else { //For Ties
+        //no change in scoreCard?
+        gameUpdate.innerText = "It's a TIE!";
+
+    }
+    if (parseInt(roundCard.innerText) === 5) {
+        let whoWon = checkWinner();
+        whoWon[0] !== 'Tie' ? 
+            gameUpdate.innerText = `Game Over! ${whoWon[0]} won by ${whoWon[1]} points!` :
+            gameUpdate.innerText = `Game Over! It's a tie :(`;
+
+        blockGame();
+    }
+}
+
+
+rock.addEventListener('click', game);
+paper.addEventListener('click', game);
+scissors.addEventListener('click', game);
+
+/*
 game()
+
+
+
+If action is selected:
+    Update Selection Box for player
+    Randomly choose Computer action and update selection
+    Compare player and computer selection:
+        Update score for the winner
+        count Round if > 5:
+            alert('Computer won by ${comp} - ${player} points')
 
 */
