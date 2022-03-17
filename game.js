@@ -12,6 +12,7 @@ const playerMoveCard = document.querySelector('#playerMoveCard');
 const compMoveCard = document.querySelector('#compMoveCard');
 const roundCard = document.querySelector('#roundCard');
 const gameUpdate = document.querySelector('#gameUpdate');
+const choiceCard = document.querySelector('#choiceCard');
 
 startBut.addEventListener('click', () => {
     startContainer.style.animation = "remove 0.5s";
@@ -66,6 +67,8 @@ function defaultGame() {
     rock.style.pointerEvents = '';
     paper.style.pointerEvents = '';
     scissors.style.pointerEvents = '';
+    choiceCard.style.display = "flex";
+
 
 }
 
@@ -74,6 +77,11 @@ function blockGame() {
     rock.style.pointerEvents = 'none';
     paper.style.pointerEvents = 'none';
     scissors.style.pointerEvents = 'none';
+    choiceCard.style.animation = "remove 0.5s";
+    setTimeout(() => {
+        choiceCard.style.display = "none";
+        choiceCard.style.animation = "";
+    }, 500)
 
 }
 
