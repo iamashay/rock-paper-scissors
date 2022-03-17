@@ -26,7 +26,7 @@
             </div>
 
             <div id="playContainer">
-                
+
                 <div id="score">
                     <h3>Score:</h3>
                     <div id="scoreCard">
@@ -42,11 +42,19 @@
                 <div id="moveCard">
                     <div id="playerMove">
                         <h3>Player</h3>
-                        <div id="playerMoveCard" class="movebox"></div>
+                        <div  ><img id="playerMoveCard" class="movebox" src="./resources/question.png" alt="player selected move"></div>
                     </div>
+                    <div id="gameMsg">
+                        <div id="round">
+                            <h2>Round <span id="roundCard">0</span></h2>
+                        </div>
+                        <div id="gameUpdate">
+                        </div>
+                    </div>
+
                     <div id="compMove">
                         <h3>Computer</h3>
-                        <div id="compMoveCard" class="movebox"></div>
+                        <div  ><img id="compMoveCard" class="movebox" src="./resources/question.png" alt="computer selected move" ></div>
                     </div>
                 </div>
 
@@ -59,7 +67,7 @@
                     </div>
                 </div>
 
-                <button id="restartBut">Go Back</button>
+                <button id="restartBut">Restart</button>
             </div>
         </div>
     </body>
