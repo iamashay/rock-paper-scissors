@@ -76,8 +76,6 @@ button:hover {
     width: 85px;
     background: #eee;
     border: 1px solid black;
-    background-image: url('./resources/paper.jpg');
-
 }
 
 #playContainer {
@@ -103,9 +101,17 @@ button:hover {
 #moveCard {
     display: flex;
     gap: 1vw;
-    width: 40vw;
-    justify-content: center;
+    width: 50vw;
+    justify-content: space-between;
     flex-wrap: wrap;
+    
+}
+
+#gameMsg {
+    min-width: 300px;
+    min-height: 100px;
+    align-self: center;
+    text-align: center;
 }
 
 #playerMove {
